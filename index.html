@@ -54,7 +54,11 @@ const questions={
 };
 
 function startExam(){
-  if(!name.value||!cid.value){alert('Enter Name and ID');return}
+  // Name and ID are optional – proceed directly
+  startScreen.classList.add('hidden');
+  examScreen.classList.remove('hidden');
+  loadQuestion();
+}
   startScreen.classList.add('hidden');
   examScreen.classList.remove('hidden');
   loadQuestion();
