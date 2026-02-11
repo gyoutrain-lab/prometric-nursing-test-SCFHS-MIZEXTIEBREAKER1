@@ -53,6 +53,227 @@ button{
 <script>
 /* ===== QUESTIONS ===== */
 const questions = [
+    {
+    q: "A nurse notices a patient’s oxygen tubing is disconnected. What should the nurse do FIRST?",
+    o: [
+      "Notify the physician",
+      "Reconnect the oxygen tubing",
+      "Document the finding",
+      "Assess lung sounds later"
+    ],
+    a: 1,
+    r: "Restoring oxygen delivery is an immediate safety priority before assessment or notification."
+  },
+  {
+    q: "A client suddenly becomes unresponsive. What is the nurse’s PRIORITY action?",
+    o: [
+      "Call the family",
+      "Assess airway and breathing",
+      "Document the event",
+      "Prepare emergency medications"
+    ],
+    a: 1,
+    r: "Assessment of airway and breathing is always the first priority in an unresponsive patient."
+  },
+  {
+    q: "Before administering an opioid medication, what should the nurse assess FIRST?",
+    o: [
+      "Pain level",
+      "Respiratory rate",
+      "Blood pressure",
+      "Allergy history"
+    ],
+    a: 1,
+    r: "Opioids depress respiration; respiratory rate must be assessed before administration."
+  },
+  {
+    q: "A patient is actively bleeding from a surgical site. What is the nurse’s FIRST action?",
+    o: [
+      "Notify the surgeon",
+      "Apply direct pressure",
+      "Document the finding",
+      "Prepare IV fluids"
+    ],
+    a: 1,
+    r: "Controlling bleeding takes priority over notification or documentation."
+  },
+  {
+    q: "A patient begins vomiting while lying flat. What should the nurse do FIRST?",
+    o: [
+      "Administer antiemetic",
+      "Turn the patient to the side",
+      "Call the physician",
+      "Document the episode"
+    ],
+    a: 1,
+    r: "Turning the patient prevents aspiration and is the immediate safety action."
+  },
+  {
+    q: "A nurse hears an IV pump alarm. What is the nurse’s PRIORITY action?",
+    o: [
+      "Silence the alarm",
+      "Assess the patient and IV site",
+      "Call biomedical services",
+      "Document the alarm"
+    ],
+    a: 1,
+    r: "The patient must be assessed first before addressing the equipment."
+  },
+  {
+    q: "A patient reports sudden dizziness and lightheadedness. What should the nurse do FIRST?",
+    o: [
+      "Assist the patient to sit or lie down",
+      "Notify the physician",
+      "Document the complaint",
+      "Provide fluids"
+    ],
+    a: 0,
+    r: "Preventing a fall is the immediate safety priority."
+  },
+  {
+    q: "A client with diabetes appears confused and sweaty. What is the nurse’s FIRST action?",
+    o: [
+      "Administer insulin",
+      "Check blood glucose level",
+      "Call the physician",
+      "Document findings"
+    ],
+    a: 1,
+    r: "These are classic signs of hypoglycemia; blood glucose must be checked immediately."
+  },
+  {
+    q: "A nurse prepares to give medication through a nasogastric tube. What must be done FIRST?",
+    o: [
+      "Flush the tube",
+      "Verify tube placement",
+      "Administer medication",
+      "Document administration"
+    ],
+    a: 1,
+    r: "Tube placement must be verified to prevent aspiration or incorrect administration."
+  },
+  {
+    q: "A patient suddenly complains of chest tightness. What is the nurse’s PRIORITY action?",
+    o: [
+      "Administer prescribed pain medication",
+      "Assess vital signs and oxygenation",
+      "Document the complaint",
+      "Notify the physician"
+    ],
+    a: 1,
+    r: "Immediate assessment is required to identify a potentially life-threatening condition."
+  },
+  {
+    q: "Before a blood transfusion is started, what is the MOST important nursing action?",
+    o: [
+      "Warm the blood",
+      "Verify patient identity with another nurse",
+      "Prime tubing with saline",
+      "Explain possible reactions"
+    ],
+    a: 1,
+    r: "Correct patient identification is the most critical safety step before transfusion."
+  },
+  {
+    q: "A nurse notices a patient attempting to get out of bed despite being a high fall risk. What should the nurse do FIRST?",
+    o: [
+      "Apply restraints",
+      "Assist the patient safely",
+      "Document the behavior",
+      "Notify the physician"
+    ],
+    a: 1,
+    r: "Immediate action to prevent injury takes priority over documentation or escalation."
+  },
+  {
+    q: "A patient receiving IV antibiotics develops itching and hives. What is the nurse’s FIRST action?",
+    o: [
+      "Slow the infusion",
+      "Stop the medication",
+      "Document the reaction",
+      "Notify the physician"
+    ],
+    a: 1,
+    r: "Stopping the medication prevents further exposure to a possible allergic reaction."
+  },
+  {
+    q: "A nurse is about to administer medication but notices the order is unclear. What should the nurse do FIRST?",
+    o: [
+      "Clarify the order",
+      "Administer the medication",
+      "Document the concern",
+      "Ask another nurse"
+    ],
+    a: 0,
+    r: "Unclear orders must be clarified to ensure patient safety."
+  },
+  {
+    q: "A patient suddenly becomes short of breath with low oxygen saturation. What should the nurse do FIRST?",
+    o: [
+      "Notify the physician",
+      "Apply supplemental oxygen",
+      "Document findings",
+      "Prepare for intubation"
+    ],
+    a: 1,
+    r: "Improving oxygenation is the immediate priority."
+  },
+  {
+    q: "A nurse finds a patient lying on the floor after a fall. What is the FIRST nursing action?",
+    o: [
+      "Help the patient stand",
+      "Assess for injuries",
+      "Notify the physician",
+      "Complete an incident report"
+    ],
+    a: 1,
+    r: "Assessment must be performed before moving the patient or reporting."
+  },
+  {
+    q: "A patient scheduled for surgery asks if they can eat breakfast. What should the nurse do FIRST?",
+    o: [
+      "Allow a light meal",
+      "Verify NPO status",
+      "Document the request",
+      "Notify the surgeon"
+    ],
+    a: 1,
+    r: "NPO status must be verified to prevent aspiration during surgery."
+  },
+  {
+    q: "A client suddenly develops weakness on one side of the body. What is the nurse’s PRIORITY action?",
+    o: [
+      "Document findings",
+      "Activate emergency response",
+      "Reassess in 30 minutes",
+      "Notify family"
+    ],
+    a: 1,
+    r: "These are signs of stroke and require immediate emergency action."
+  },
+  {
+    q: "A nurse notices contamination of sterile gloves during a procedure. What should the nurse do FIRST?",
+    o: [
+      "Continue the procedure",
+      "Change the gloves",
+      "Document the event",
+      "Notify the supervisor"
+    ],
+    a: 1,
+    r: "Maintaining sterility prevents infection and must be corrected immediately."
+  },
+  {
+    q: "A patient receiving tube feeding is lying flat. What is the nurse’s FIRST action?",
+    o: [
+      "Stop the feeding",
+      "Elevate the head of the bed",
+      "Notify the physician",
+      "Document the finding"
+    ],
+    a: 1,
+    r: "Elevating the head of the bed reduces aspiration risk and is immediately required."
+  },
+
   {
     q: "A patient suddenly becomes cyanotic with difficulty breathing. What is the PRIORITY nursing action?",
     o: [
@@ -75,6 +296,498 @@ const questions = [
     a: 1,
     r: "Checking allergies is a critical safety step and must be done before any medication is given."
   }
+    {
+    q: "A stable postoperative patient reports mild redness around the incision site without drainage. What is the MOST appropriate nursing action?",
+    o: [
+      "Notify the surgeon immediately",
+      "Document and continue to monitor",
+      "Start prescribed antibiotics",
+      "Apply a pressure dressing"
+    ],
+    a: 1,
+    r: "Mild redness without other signs of infection is expected postoperatively and requires monitoring, not escalation."
+  },
+  {
+    q: "A patient reports nausea 30 minutes after receiving an oral medication. What should the nurse do FIRST?",
+    o: [
+      "Notify the physician",
+      "Assess severity and contributing factors",
+      "Administer an antiemetic",
+      "Document the symptom"
+    ],
+    a: 1,
+    r: "Assessment must occur before medication administration or provider notification."
+  },
+  {
+    q: "A client reports dizziness when standing up. Which nursing action is MOST appropriate?",
+    o: [
+      "Advise the client to stay in bed",
+      "Check orthostatic vital signs",
+      "Notify the physician",
+      "Document the finding"
+    ],
+    a: 1,
+    r: "Orthostatic hypotension must be assessed to determine the cause of dizziness."
+  },
+  {
+    q: "A patient expresses anxiety about an upcoming diagnostic test. What is the nurse’s BEST response?",
+    o: [
+      "Request an order for sedatives",
+      "Explain the procedure and answer questions",
+      "Document the anxiety",
+      "Tell the patient not to worry"
+    ],
+    a: 1,
+    r: "Providing information reduces anxiety and supports patient-centered care."
+  },
+  {
+    q: "A stable client complains of constipation on postoperative day 2. What should the nurse do FIRST?",
+    o: [
+      "Administer a laxative",
+      "Assess bowel sounds and history",
+      "Notify the provider",
+      "Document the complaint"
+    ],
+    a: 1,
+    r: "Assessment guides appropriate intervention and must occur before treatment."
+  },
+  {
+    q: "A patient asks for pain medication earlier than scheduled. What is the nurse’s BEST action?",
+    o: [
+      "Refuse the request",
+      "Assess the patient’s pain level",
+      "Administer the medication immediately",
+      "Notify the physician"
+    ],
+    a: 1,
+    r: "Pain must be assessed before deciding on medication administration."
+  },
+  {
+    q: "A client with diabetes reports feeling shaky but is alert and oriented. What should the nurse do FIRST?",
+    o: [
+      "Administer insulin",
+      "Check blood glucose level",
+      "Call the physician",
+      "Document the symptom"
+    ],
+    a: 1,
+    r: "Blood glucose assessment is required before any intervention."
+  },
+  {
+    q: "A stable patient has a slightly elevated blood pressure but no symptoms. What is the MOST appropriate action?",
+    o: [
+      "Administer antihypertensive medication",
+      "Recheck blood pressure later",
+      "Notify the physician",
+      "Document as an incident"
+    ],
+    a: 1,
+    r: "Asymptomatic mild elevation requires monitoring, not immediate intervention."
+  },
+  {
+    q: "A patient demonstrates incorrect use of a metered-dose inhaler. What should the nurse do?",
+    o: [
+      "Document noncompliance",
+      "Re-teach correct technique",
+      "Notify the provider",
+      "Ignore the error"
+    ],
+    a: 1,
+    r: "Patient education corrects improper technique and improves outcomes."
+  },
+  {
+    q: "A patient reports mild shortness of breath after ambulating but recovers with rest. What should the nurse do FIRST?",
+    o: [
+      "Apply oxygen",
+      "Assess oxygen saturation",
+      "Notify the physician",
+      "Document the event"
+    ],
+    a: 1,
+    r: "Assessment determines whether intervention is required."
+  },
+  {
+    q: "A client requests discharge teaching while the nurse is preparing medications. What is the nurse’s BEST response?",
+    o: [
+      "Provide brief teaching now",
+      "Schedule a time for teaching",
+      "Refuse the request",
+      "Ask another nurse to do it"
+    ],
+    a: 1,
+    r: "Discharge teaching should be provided when the nurse can focus fully."
+  },
+  {
+    q: "A patient reports itching after starting a new antibiotic but has no rash. What should the nurse do FIRST?",
+    o: [
+      "Stop the medication",
+      "Assess the patient further",
+      "Notify the physician",
+      "Document the reaction"
+    ],
+    a: 1,
+    r: "Further assessment is needed to determine if this is an allergic reaction."
+  },
+  {
+    q: "A client with heart failure gains 1 kg in one day but denies symptoms. What is the nurse’s BEST action?",
+    o: [
+      "Notify the physician immediately",
+      "Assess fluid intake and output",
+      "Restrict fluids",
+      "Document the finding"
+    ],
+    a: 1,
+    r: "Assessment of fluid balance guides appropriate intervention."
+  },
+  {
+    q: "A patient refuses a bath. What is the MOST appropriate nursing response?",
+    o: [
+      "Document refusal",
+      "Explore the reason for refusal",
+      "Insist the bath is necessary",
+      "Notify the supervisor"
+    ],
+    a: 1,
+    r: "Understanding the patient’s reason supports autonomy and cooperation."
+  },
+  {
+    q: "A stable client reports pain rated 3/10. What should the nurse do FIRST?",
+    o: [
+      "Administer opioid analgesic",
+      "Assess pain characteristics",
+      "Notify the physician",
+      "Document only"
+    ],
+    a: 1,
+    r: "Pain assessment guides appropriate pain management."
+  },
+  {
+    q: "A patient asks if they can eat before a scheduled procedure. What should the nurse do FIRST?",
+    o: [
+      "Allow a light meal",
+      "Verify NPO status",
+      "Document the question",
+      "Notify the physician"
+    ],
+    a: 1,
+    r: "NPO status must be verified to ensure procedural safety."
+  },
+  {
+    q: "A patient asks about side effects of a new medication. What should the nurse do?",
+    o: [
+      "Refer to the pharmacist",
+      "Provide accurate information",
+      "Document the question",
+      "Ignore the request"
+    ],
+    a: 1,
+    r: "Medication education is a nursing responsibility."
+  },
+  {
+    q: "A stable patient reports difficulty sleeping in the hospital. What is the nurse’s BEST action?",
+    o: [
+      "Administer a sedative",
+      "Assess contributing factors",
+      "Notify the physician",
+      "Document the complaint"
+    ],
+    a: 1,
+    r: "Assessment should precede pharmacologic intervention."
+  },
+  {
+    q: "A patient asks to speak with the physician about care decisions. What should the nurse do?",
+    o: [
+      "Give personal advice",
+      "Facilitate communication",
+      "Document the request",
+      "Ignore the request"
+    ],
+    a: 1,
+    r: "The nurse acts as a patient advocate and facilitates communication."
+  },
+  {
+    q: "A stable patient with a Foley catheter has cloudy urine but no fever. What should the nurse do FIRST?",
+    o: [
+      "Change the catheter",
+      "Assess for additional signs of infection",
+      "Notify the physician",
+      "Document the finding"
+    ],
+    a: 1,
+    r: "Assessment is required before intervention or escalation."
+  },
+    {
+    q: "A stable patient is 30 minutes late receiving a scheduled medication due to unit activity. What should the nurse do?",
+    o: [
+      "Skip the dose",
+      "Administer the medication as soon as possible",
+      "Notify the physician",
+      "Document the delay and omit the dose"
+    ],
+    a: 1,
+    r: "Unless contraindicated, scheduled medications should be given as soon as possible rather than skipped."
+  },
+  {
+    q: "A client expresses concern about the cost of prescribed medications. What is the nurse’s BEST response?",
+    o: [
+      "Ignore the concern",
+      "Refer the client to social services",
+      "Tell the client to discuss it with the pharmacy",
+      "Document the concern only"
+    ],
+    a: 1,
+    r: "Referring to social services supports patient advocacy and access to care."
+  },
+  {
+    q: "A stable patient reports mild nausea after meals for the past two days. What should the nurse do FIRST?",
+    o: [
+      "Administer an antiemetic",
+      "Assess dietary intake and timing",
+      "Notify the physician",
+      "Document the symptom"
+    ],
+    a: 1,
+    r: "Assessment of contributing factors guides appropriate intervention."
+  },
+  {
+    q: "A client wants to leave the hospital against medical advice. What is the nurse’s FIRST action?",
+    o: [
+      "Call security",
+      "Explain the risks of leaving",
+      "Refuse to allow discharge",
+      "Notify the physician immediately"
+    ],
+    a: 1,
+    r: "Patients have the right to leave; the nurse must first ensure informed decision-making."
+  },
+  {
+    q: "A patient asks why a medication was discontinued. What is the nurse’s BEST response?",
+    o: [
+      "Tell the patient it is not important",
+      "Provide available information",
+      "Refer all questions to the physician",
+      "Document the question only"
+    ],
+    a: 1,
+    r: "Providing information within scope supports patient understanding."
+  },
+  {
+    q: "A stable client has mild ankle edema at the end of the day. What should the nurse do FIRST?",
+    o: [
+      "Notify the physician",
+      "Assess fluid balance and history",
+      "Apply compression stockings",
+      "Document the finding"
+    ],
+    a: 1,
+    r: "Assessment precedes intervention or escalation."
+  },
+  {
+    q: "A patient asks for privacy during a bedside procedure. What should the nurse do?",
+    o: [
+      "Ignore the request",
+      "Provide privacy as requested",
+      "Document and continue",
+      "Ask the family to decide"
+    ],
+    a: 1,
+    r: "Respecting patient dignity and privacy is an ethical nursing responsibility."
+  },
+  {
+    q: "A stable patient reports tingling in the fingers with no other symptoms. What should the nurse do FIRST?",
+    o: [
+      "Notify the physician",
+      "Assess neurological status",
+      "Document the complaint",
+      "Reassure the patient"
+    ],
+    a: 1,
+    r: "Assessment determines the significance of the symptom."
+  },
+  {
+    q: "A patient asks for clarification about discharge instructions. What should the nurse do?",
+    o: [
+      "Refer to the physician",
+      "Reinforce and clarify the instructions",
+      "Document the question",
+      "Ignore the request"
+    ],
+    a: 1,
+    r: "Ensuring understanding is a core nursing responsibility."
+  },
+  {
+    q: "A stable patient is scheduled for diagnostic imaging. What should the nurse verify BEFORE transport?",
+    o: [
+      "Dietary preferences",
+      "Required consent",
+      "Room availability",
+      "Next medication time"
+    ],
+    a: 1,
+    r: "Verification of consent is required before diagnostic procedures."
+  },
+  {
+    q: "A patient reports mild pain but refuses medication. What should the nurse do FIRST?",
+    o: [
+      "Document refusal",
+      "Explore non-pharmacologic options",
+      "Notify the physician",
+      "Insist on medication"
+    ],
+    a: 1,
+    r: "Respecting patient preference while offering alternatives supports autonomy."
+  },
+  {
+    q: "A nurse notices a patient appears withdrawn and avoids eye contact. What is the MOST appropriate action?",
+    o: [
+      "Ignore the behavior",
+      "Assess emotional status",
+      "Notify the physician",
+      "Document only"
+    ],
+    a: 1,
+    r: "Assessment of psychosocial status is part of holistic nursing care."
+  },
+  {
+    q: "A stable patient requests a different nurse for personal reasons. What should the nurse do?",
+    o: [
+      "Refuse the request",
+      "Attempt to accommodate if possible",
+      "Document and ignore",
+      "Report the patient"
+    ],
+    a: 1,
+    r: "Respecting patient preferences supports therapeutic relationships when feasible."
+  },
+  {
+    q: "A client expresses dissatisfaction with care but is medically stable. What is the nurse’s BEST action?",
+    o: [
+      "Become defensive",
+      "Listen and acknowledge concerns",
+      "Notify administration immediately",
+      "Document and walk away"
+    ],
+    a: 1,
+    r: "Active listening helps resolve concerns and supports patient-centered care."
+  },
+  {
+    q: "A stable patient declines participation in a teaching session. What should the nurse do FIRST?",
+    o: [
+      "Document refusal",
+      "Assess readiness to learn",
+      "Notify the physician",
+      "Insist on teaching"
+    ],
+    a: 1,
+    r: "Assessing readiness helps tailor education effectively."
+  },
+  {
+    q: "A nurse is asked to perform a task unfamiliar to them but within scope. What should the nurse do?",
+    o: [
+      "Refuse outright",
+      "Seek guidance or supervision",
+      "Perform without assistance",
+      "Document and proceed"
+    ],
+    a: 1,
+    r: "Seeking guidance ensures safe and competent practice."
+  },
+  {
+    q: "A stable patient requests to review their plan of care. What should the nurse do?",
+    o: [
+      "Refer to the physician",
+      "Review and explain the plan",
+      "Document the request",
+      "Ignore the request"
+    ],
+    a: 1,
+    r: "Patients have the right to understand their care plan."
+  },
+  {
+    q: "A patient expresses fear about a new diagnosis but asks no direct questions. What should the nurse do?",
+    o: [
+      "Wait until asked",
+      "Encourage expression of concerns",
+      "Document the behavior",
+      "Notify the physician"
+    ],
+    a: 1,
+    r: "Encouraging communication supports emotional coping."
+  },
+  {
+    q: "A stable patient is repeatedly late to appointments. What is the nurse’s BEST action?",
+    o: [
+      "Document noncompliance",
+      "Explore barriers to attendance",
+      "Discharge the patient",
+      "Notify administration"
+    ],
+    a: 1,
+    r: "Understanding barriers helps improve adherence."
+  },
+  {
+    q: "A patient requests complementary therapy information. What should the nurse do?",
+    o: [
+      "Dismiss the request",
+      "Provide evidence-based information",
+      "Encourage unverified treatments",
+      "Document and ignore"
+    ],
+    a: 1,
+    r: "Providing accurate information supports informed choices."
+  },
+  {
+    q: "A competent adult patient refuses a life-saving blood transfusion for religious reasons. What should the nurse do?",
+    o: [
+      "Administer the transfusion anyway",
+      "Notify the physician and respect the refusal",
+      "Ask the family to override the decision",
+      "Call hospital security"
+    ],
+    a: 1,
+    r: "A competent adult has the legal right to refuse treatment, even if life-threatening."
+  },
+  {
+    q: "Which task may a nurse safely delegate to an unlicensed assistive personnel (UAP)?",
+    o: [
+      "Assessment of pain",
+      "Initial patient education",
+      "Measuring vital signs on a stable patient",
+      "Evaluation of care outcomes"
+    ],
+    a: 2,
+    r: "UAPs may perform routine, non-invasive tasks on stable patients."
+  },
+  {
+    q: "A nurse discovers another nurse documenting care that was not performed. What is the nurse’s BEST action?",
+    o: [
+      "Ignore the behavior",
+      "Report the incident according to policy",
+      "Confront the nurse aggressively",
+      "Correct the chart personally"
+    ],
+    a: 1,
+    r: "Falsification of records is unethical and must be reported per policy."
+  },
+  {
+    q: "A confused patient tries to leave the unit. What is the nurse’s FIRST legal responsibility?",
+    o: [
+      "Apply restraints",
+      "Ensure patient safety while following policy",
+      "Call security immediately",
+      "Lock the unit doors"
+    ],
+    a: 1,
+    r: "The nurse must protect the patient while following legal restraint protocols."
+  },
+  {
+    q: "Which situation requires informed consent from the patient?",
+    o: [
+      "Routine vital signs",
+      "Insertion of an IV line",
+      "Blood transfusion",
+      "Bedside glucose
+
 ];
 
 let i = 0;
