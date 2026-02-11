@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SCFHS Prometric Adaptive Exam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: Arial, sans-serif; background:#f4f6f8; margin:0; padding:20px; }
+    .container { max-width:900px; margin:auto; background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.1); }
+    h1, h2 { margin-top:0; }
+    .badge { padding:4px 10px; border-radius:12px; font-size:12px; color:#fff; }
+    .easy { background:#2ecc71; }
+    .medium { background:#f1c40f; color:#000; }
+    .hard { background:#e74c3c; }
+    .question { margin:20px 0; }
+    .options label { display:block; padding:8px; border:1px solid #ddd; border-radius:6px; margin-bottom:6px; cursor:pointer; }
+    .options input { margin-right:8px; }
+    button { padding:10px 16px; font-size:16px; border:none; border-radius:6px; background:#3498db; color:#fff; cursor:pointer; }
+    button:disabled { background:#ccc; }
+    .hidden { display:none; }
+    .result { padding:20px; background:#ecf0f1; border-radius:6px; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>SCFHS Prometric Adaptive Exam</h1>
+  <p><strong>Format:</strong> Easy → Medium → Hard (Adaptive)</p>
+
+  <div id="intro">
+    <label>Candidate Name / ID:</label><br />
+    <input id="candidate" style="width:100%;padding:8px" />
+    <br /><br />
+    <button onclick="startExam()">Start Exam</button>
+  </div>
+
+  <div id="exam" class="hidden">
+    <div id="status"></div>
+    <div id="questionBox" class="question"></div>
+    <div class="options" id="options"></div>
+    <button onclick="submitAnswer()">Next</button>
+  </div>
+
+  <div id="result" class="hidden"></div>
+</div>
+
+<script>
+// ================= QUESTION BANK =================
+// NOTE: Text shortened for demo; replace with full vignettes as needed
+const questions = {
+  easy: Array.from({length:30}, (_,i)=>({
+    text:`[EASY Q${i+1}] Patient safety / priority scenario. What should the nurse do FIRST?`,
+    options:['Action A','Action B','Action C','Action D'],
+    answer:0,
+    failTag:'DELAY'
+  })),
+  medium: Array.from({length:40}, (_,i)=>({
+    text:`[MEDIUM Q${i+31}] Stable patient scenario. MOST appropriate nursing action?`,
+    options:['Option A','Option B','Option C','Option D'],
+    answer:1,
+    failTag:'SEQUENCE'
+  })),
+  hard: Array.from({length:30}, (_,i)=>({
+    text:`[HARD Q${i+71}] Ethics / delegation / legal scenario. BEST action?`,
+    options:['Choice A','Choice B','Choice C','Choice D'],
+    answer:2,
+    failTag:'LAW'
+  }))
+};
+
+// ================= STATE =================
+let level = 'easy';
+let index = 0;
+let score = { easy:0, medium:0, hard:0 };
+let wrong = { easy:0, medium:0, hard:0 };
+let name = '';
+
+function startExam(){
+  name = document.getElementById('candidate').value || 'Anonymous';
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('exam').classList.remove('hidden');
+  loadQuestion();
+}
+
+function loadQuestion(){
+  const q = questions[level][index];
+  document.getElementById('status').innerHTML = `<span class="badge ${level}">${level.toUpperCase()}</span> Question ${index+1}`;
+  document.getElementById('questionBox').innerText = q.text;
+  const optBox = document.getElementById('options');
+  optBox.innerHTML='';
+  q.options.forEach((o,i)=>{
+    optBox.innerHTML += `<label><input type="radio" name="opt" value="${i}"/>${o}</label>`;
+  });
+}
+
+function submitAnswer(){
+  const selected = document.querySelector('input[name="opt"]:checked');
+  if(!selected) return alert('Select an answer');
+  const q = questions[level][index];
+  if(parseInt(selected.value) === q.answer){ score[level]++; }
+  else { wrong[level]++; }
+  index++;
+
+  // ===== GATING LOGIC =====
+  if(level==='easy' && (wrong.easy>=5 || index===30)){
+    if(wrong.easy>=5) return finish('FAIL','Unsafe basic practice (EASY gate)');
+    level='medium'; index=0;
+  }
+  if(level==='medium' && (wrong.medium>=12 || index===40)){
+    if(wrong.medium>=12) return finish('FAIL','Clinical judgment failure (MEDIUM gate)');
+    level='hard'; index=0;
+  }
+  if(level==='hard' && (wrong.hard>=10 || index===30)){
+    if(wrong.hard>=10) return finish('FAIL','Ethical / legal risk (HARD gate)');
+    return finish('PASS','Meets SCFHS Prometric standard');
+  }
+
+  loadQuestion();
+}
+
+function finish(result, reason){
+  document.getElementById('exam').classList.add('hidden');
+  const r = document.getElementById('result');
+  r.classList.remove('hidden');
+  r.innerHTML = `
+    <h2>Result Report</h2>
+    <p><strong>Candidate:</strong> ${name}</p>
+    <p><strong>Result:</strong> ${result}</p>
+    <p><strong>Reason:</strong> ${reason}</p>
+    <hr />
+    <p><strong>Easy:</strong> ${score.easy}/30</p>
+    <p><strong>Medium:</strong> ${score.medium}/40</p>
+    <p><strong>Hard:</strong> ${score.hard}/30</p>
+  `;
+}
+</script>
+</body>
+</html>
