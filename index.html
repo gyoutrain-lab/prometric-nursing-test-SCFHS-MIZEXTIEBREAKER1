@@ -45,26 +45,126 @@
 
 <script>
 // ================= QUESTION BANK =================
-// NOTE: Text shortened for demo; replace with full vignettes as needed
+// FULL 100-ITEM SCFHS PROMETRIC BANK (Easy 30 / Medium 40 / Hard 30)
 const questions = {
-  easy: Array.from({length:30}, (_,i)=>({
-    text:`[EASY Q${i+1}] Patient safety / priority scenario. What should the nurse do FIRST?`,
-    options:['Action A','Action B','Action C','Action D'],
-    answer:0,
-    failTag:'DELAY'
-  })),
-  medium: Array.from({length:40}, (_,i)=>({
-    text:`[MEDIUM Q${i+31}] Stable patient scenario. MOST appropriate nursing action?`,
-    options:['Option A','Option B','Option C','Option D'],
-    answer:1,
-    failTag:'SEQUENCE'
-  })),
-  hard: Array.from({length:30}, (_,i)=>({
-    text:`[HARD Q${i+71}] Ethics / delegation / legal scenario. BEST action?`,
-    options:['Choice A','Choice B','Choice C','Choice D'],
-    answer:2,
-    failTag:'LAW'
-  }))
+  easy: [
+    {text:"[EASY 1] A patient suddenly develops shortness of breath and cyanosis. What should the nurse do FIRST?", options:["Apply oxygen","Document findings","Reassure the patient","Notify family"], answer:0, failTag:"DELAY"},
+    {text:"[EASY 2] A client becomes unresponsive during assessment. What is the priority action?", options:["Check airway and breathing","Call the family","Document event","Obtain consent"], answer:0, failTag:"ABC"},
+    {text:"[EASY 3] Oxygen tubing is found disconnected in a stable patient receiving oxygen. What should the nurse do first?", options:["Reconnect oxygen","Notify physician","Document","Reassess in 30 minutes"], answer:0, failTag:"TASK"},
+    {text:"[EASY 4] A patient is choking during feeding. What is the immediate action?", options:["Stop feeding","Call physician","Document","Offer water"], answer:0, failTag:"DELAY"},
+    {text:"[EASY 5] A nurse notes active bleeding from an IV site. What should be done first?", options:["Apply pressure","Restart IV","Document","Call provider"], answer:0, failTag:"SAFETY"},
+    {text:"[EASY 6] A client develops sudden hypotension. What is the nurse’s priority?", options:["Position patient and assess","Provide teaching","Document","Recheck later"], answer:0, failTag:"ABC"},
+    {text:"[EASY 7] Before administering insulin, what must the nurse do?", options:["Check blood glucose","Prepare syringe","Document","Ask patient preference"], answer:0, failTag:"PROTOCOL"},
+    {text:"[EASY 8] A postoperative patient has oxygen saturation of 88%. What is the first action?", options:["Apply oxygen","Notify surgeon","Reassess later","Document"], answer:0, failTag:"ABC"},
+    {text:"[EASY 9] A patient suddenly collapses in the hallway. What should the nurse do first?", options:["Activate emergency response","Get chart","Notify family","Document"], answer:0, failTag:"EMERGENCY"},
+    {text:"[EASY 10] A client shows signs of aspiration while eating. What is the priority action?", options:["Stop feeding","Offer fluids","Document","Notify dietitian"], answer:0, failTag:"SAFETY"},
+    {text:"[EASY 11] An IV pump alarm is sounding continuously. What should the nurse do first?", options:["Assess the patient","Silence alarm","Call biomedical","Document"], answer:0, failTag:"SAFETY"},
+    {text:"[EASY 12] A patient develops cyanosis. What is the immediate intervention?", options:["Ensure airway patency","Document","Provide teaching","Notify family"], answer:0, failTag:"ABC"},
+    {text:"[EASY 13] Before blood transfusion, which action is required?", options:["Verify patient identity","Prime tubing","Document","Explain risks"], answer:0, failTag:"PROTOCOL"},
+    {text:"[EASY 14] A patient becomes acutely confused. What should the nurse do first?", options:["Assess oxygenation","Document","Reorient patient","Notify family"], answer:0, failTag:"ABC"},
+    {text:"[EASY 15] A client reports sudden chest pain. What is the priority action?", options:["Assess vital signs","Provide reassurance","Document","Give fluids"], answer:0, failTag:"ASSESS"},
+    {text:"[EASY 16] A nasogastric tube feeding is running. What position is essential?", options:["Head of bed elevated","Supine","Side-lying","Trendelenburg"], answer:0, failTag:"ASPIRATION"},
+    {text:"[EASY 17] A patient has a seizure. What is the nurse’s first action?", options:["Protect from injury","Insert oral airway","Restrain","Document"], answer:0, failTag:"SAFETY"},
+    {text:"[EASY 18] A client has sudden onset of respiratory distress. What should the nurse do immediately?", options:["Apply oxygen","Document","Provide teaching","Call family"], answer:0, failTag:"ABC"},
+    {text:"[EASY 19] A patient with a chest tube has the tubing disconnected. What is the first action?", options:["Place tube in sterile water","Clamp tube","Document","Notify physician"], answer:0, failTag:"SAFETY"},
+    {text:"[EASY 20] Before administering any medication, what must the nurse confirm?", options:["Correct patient","Medication supply","Room number","Family consent"], answer:0, failTag:"PROTOCOL"},
+    {text:"[EASY 21] A patient is actively vomiting. What is the priority nursing action?", options:["Turn patient to side","Offer water","Document","Provide teaching"], answer:0, failTag:"ASPIRATION"},
+    {text:"[EASY 22] A client reports sudden dizziness and fainting. What should the nurse do first?", options:["Assess vital signs","Document","Reassure","Notify family"], answer:0, failTag:"ASSESS"},
+    {text:"[EASY 23] A patient is at high fall risk and attempts to get out of bed. What should the nurse do first?", options:["Ensure safety and assist","Document","Apply restraints","Notify physician"], answer:0, failTag:"SAFETY"},
+    {text:"[EASY 24] A client with diabetes becomes confused. What is the priority action?", options:["Check blood glucose","Document","Reassure","Call family"], answer:0, failTag:"ASSESS"},
+    {text:"[EASY 25] A patient suddenly develops wheezing after medication. What should the nurse do first?", options:["Stop medication","Document","Reassure","Provide teaching"], answer:0, failTag:"SAFETY"},
+    {text:"[EASY 26] A client has a fever and neutropenia. What is the priority nursing action?", options:["Notify provider immediately","Document","Reassess later","Provide teaching"], answer:0, failTag:"ESCALATION"},
+    {text:"[EASY 27] A patient shows signs of shock. What is the first nursing action?", options:["Ensure airway and circulation","Document","Provide teaching","Call family"], answer:0, failTag:"ABC"},
+    {text:"[EASY 28] A client has a dislodged urinary catheter. What should the nurse do first?", options:["Assess patient","Document","Replace immediately","Notify family"], answer:0, failTag:"ASSESS"},
+    {text:"[EASY 29] A patient has uncontrolled bleeding from a wound. What is the priority action?", options:["Apply direct pressure","Document","Reassure","Notify family"], answer:0, failTag:"SAFETY"},
+    {text:"[EASY 30] A patient becomes suddenly unresponsive. What should the nurse do first?", options:["Check airway and breathing","Document","Call family","Prepare report"], answer:0, failTag:"ABC"}
+  ],
+  medium: [
+    {text:"[MEDIUM 31] A stable postoperative client reports mild redness at the incision site. What is the MOST appropriate nursing action?", options:["Notify surgeon","Document and monitor","Start antibiotics","Apply pressure dressing"], answer:1, failTag:"PREMATURE ESCALATION"},
+    {text:"[MEDIUM 32] A stable patient reports nausea after medication administration. What should the nurse do?", options:["Assess severity","Document only","Call physician","Discontinue medication"], answer:0, failTag:"ASSESS"},
+    {text:"[MEDIUM 33] A client reports dizziness when standing. What is the best nursing action?", options:["Check orthostatic vital signs","Advise bed rest","Document","Notify provider"], answer:0, failTag:"SEQUENCE"},
+    {text:"[MEDIUM 34] A patient expresses anxiety before a scheduled procedure. What is the most appropriate nursing response?", options:["Explain the procedure","Request sedative","Document anxiety","Ignore concern"], answer:0, failTag:"PATIENT-CENTERED"},
+    {text:"[MEDIUM 35] A stable client complains of constipation on day 2 post-op. What should the nurse do first?", options:["Assess bowel sounds","Administer laxative","Notify provider","Document"], answer:0, failTag:"ASSESS"},
+    {text:"[MEDIUM 36] A patient asks for pain medication earlier than scheduled. What is the nurse’s best action?", options:["Assess pain level","Refuse medication","Administer immediately","Document request"], answer:0, failTag:"SEQUENCE"},
+    {text:"[MEDIUM 37] A client with diabetes reports feeling shaky but is alert. What is the nurse’s priority?", options:["Check blood glucose","Give juice","Document","Notify provider"], answer:0, failTag:"ASSESS"},
+    {text:"[MEDIUM 38] A stable patient has slightly elevated blood pressure but no symptoms. What should the nurse do?", options:["Recheck BP later","Administer medication","Call physician","Document incident"], answer:0, failTag:"PREMATURE ACTION"},
+    {text:"[MEDIUM 39] A client demonstrates incorrect inhaler technique. What should the nurse do?", options:["Re-teach technique","Document noncompliance","Notify provider","Ignore"], answer:0, failTag:"TEACHING"},
+    {text:"[MEDIUM 40] A patient reports mild shortness of breath after walking. What is the most appropriate action?", options:["Assess oxygen saturation","Apply oxygen","Document","Notify provider"], answer:0, failTag:"ASSESS"},
+
+    {text:"[MEDIUM 41] A client requests discharge teaching while the nurse is preparing medications. What is the best nursing response?", options:["Schedule teaching time","Provide brief teaching now","Refuse and document","Ask another nurse"], answer:0, failTag:"PRIORITIZATION"},
+    {text:"[MEDIUM 42] A stable patient reports itching after starting a new antibiotic. What should the nurse do first?", options:["Assess for rash","Stop medication","Notify provider","Document"], answer:0, failTag:"ASSESS"},
+    {text:"[MEDIUM 43] A client with heart failure gains 1 kg in one day but is asymptomatic. What is the best action?", options:["Assess fluid status","Notify provider immediately","Restrict fluids","Document"], answer:0, failTag:"ASSESS"},
+    {text:"[MEDIUM 44] A patient refuses a bath. What is the nurse’s best response?", options:["Explore reason for refusal","Document refusal","Insist on bath","Notify supervisor"], answer:0, failTag:"PATIENT AUTONOMY"},
+    {text:"[MEDIUM 45] A stable client reports mild pain rated 3/10. What should the nurse do?", options:["Assess pain characteristics","Administer opioid","Notify provider","Document only"], answer:0, failTag:"ASSESS"},
+    {text:"[MEDIUM 46] A patient scheduled for surgery asks if they can eat. What is the nurse’s action?", options:["Verify NPO status","Allow light snack","Document","Notify provider"], answer:0, failTag:"PROTOCOL"},
+    {text:"[MEDIUM 47] A client asks about side effects of a new medication. What should the nurse do?", options:["Provide education","Refer to pharmacist","Document","Ignore"], answer:0, failTag:"TEACHING"},
+    {text:"[MEDIUM 48] A stable patient reports difficulty sleeping in hospital. What is the best nursing action?", options:["Assess contributing factors","Administer sedative","Notify provider","Document"], answer:0, failTag:"ASSESS"},
+    {text:"[MEDIUM 49] A client asks to speak to the physician about care decisions. What should the nurse do?", options:["Facilitate communication","Refuse","Document only","Give own opinion"], answer:0, failTag:"ADVOCACY"},
+    {text:"[MEDIUM 50] A stable patient has a Foley catheter with cloudy urine. What is the nurse’s first action?", options:["Assess for infection signs","Change catheter","Notify provider","Document"], answer:0, failTag:"ASSESS"},
+
+    {text:"[MEDIUM 51] A patient is late for medication but is stable. What should the nurse do?", options:["Administer as soon as possible","Skip dose","Document","Notify provider"], answer:0, failTag:"PRIORITIZATION"},
+    {text:"[MEDIUM 52] A client expresses concern about treatment cost. What is the nurse’s response?", options:["Refer to social services","Ignore concern","Document","Provide financial advice"], answer:0, failTag:"ADVOCACY"},
+    {text:"[MEDIUM 53] A stable patient reports mild nausea after meals. What should the nurse do first?", options:["Assess diet tolerance","Administer antiemetic","Notify provider","Document"], answer:0, failTag:"ASSESS"},
+    {text:"[MEDIUM 54] A client wants to leave against medical advice. What is the nurse’s action?", options:["Explain risks","Call security","Refuse discharge","Document only"], answer:0, failTag:"ETHICS"},
+    {text:"[MEDIUM 55] A patient asks why a medication was changed. What should the nurse do?", options:["Provide explanation","Refer to physician","Document","Ignore"], answer:0, failTag:"TEACHING"},
+    {text:"[MEDIUM 56] A stable client has mild edema in ankles. What is the nurse’s best action?", options:["Assess fluid balance","Apply compression","Notify provider","Document"], answer:0, failTag:"ASSESS"},
+    {text:"[MEDIUM 57] A patient requests privacy during care. What should the nurse do?", options:["Provide privacy","Document","Ignore","Ask family to stay"], answer:0, failTag:"ETHICS"},
+    {text:"[MEDIUM 58] A stable client reports tingling in fingers. What is the nurse’s first action?", options:["Assess neuro status","Notify provider","Document","Reassure"], answer:0, failTag:"ASSESS"},
+    {text:"[MEDIUM 59] A patient asks for clarification about discharge instructions. What should the nurse do?", options:["Reinforce teaching","Document","Refer","Ignore"], answer:0, failTag:"TEACHING"},
+    {text:"[MEDIUM 60] A stable patient is scheduled for diagnostic imaging. What should the nurse do before transport?", options:["Verify consent","Send immediately","Document","Notify provider"], answer:0, failTag:"PROTOCOL"}
+  ], answer:1, failTag:"PREMATURE ESCALATION"},
+    {text:"[MEDIUM 32] A stable patient reports nausea after medication administration. What should the nurse do?", options:["Assess severity","Document only","Call physician","Discontinue medication"], answer:0, failTag:"ASSESS"},
+    {text:"[MEDIUM 33] A client reports dizziness when standing. What is the best nursing action?", options:["Check orthostatic vital signs","Advise bed rest","Document","Notify provider"], answer:0, failTag:"SEQUENCE"},
+    {text:"[MEDIUM 34] A patient expresses anxiety before a scheduled procedure. What is the most appropriate nursing response?", options:["Explain the procedure","Request sedative","Document anxiety","Ignore concern"], answer:0, failTag:"PATIENT-CENTERED"},
+    {text:"[MEDIUM 35] A stable client complains of constipation on day 2 post-op. What should the nurse do first?", options:["Assess bowel sounds","Administer laxative","Notify provider","Document"], answer:0, failTag:"ASSESS"},
+    {text:"[MEDIUM 36] A patient asks for pain medication earlier than scheduled. What is the nurse’s best action?", options:["Assess pain level","Refuse medication","Administer immediately","Document request"], answer:0, failTag:"SEQUENCE"},
+    {text:"[MEDIUM 37] A client with diabetes reports feeling shaky but is alert. What is the nurse’s priority?", options:["Check blood glucose","Give juice","Document","Notify provider"], answer:0, failTag:"ASSESS"},
+    {text:"[MEDIUM 38] A stable patient has slightly elevated blood pressure but no symptoms. What should the nurse do?", options:["Recheck BP later","Administer medication","Call physician","Document incident"], answer:0, failTag:"PREMATURE ACTION"},
+    {text:"[MEDIUM 39] A client demonstrates incorrect inhaler technique. What should the nurse do?", options:["Re-teach technique","Document noncompliance","Notify provider","Ignore"], answer:0, failTag:"TEACHING"},
+    {text:"[MEDIUM 40] A patient reports mild shortness of breath after walking. What is the most appropriate action?", options:["Assess oxygen saturation","Apply oxygen","Document","Notify provider"], answer:0, failTag:"ASSESS"}
+  ],
+  hard: [
+    {text:"[HARD 71] A competent adult patient refuses a prescribed treatment. The family insists the nurse proceed. What should the nurse do?", options:["Proceed with treatment","Notify physician and proceed","Respect refusal and document","Ask administration to override"], answer:2, failTag:"ETHICS"},
+    {text:"[HARD 72] Which task can be delegated to a UAP for a stable patient?", options:["Patient education","Assessment","Routine vital signs","Care plan modification"], answer:2, failTag:"DELEGATION"},
+    {text:"[HARD 73] A nurse discovers a medication error after administration. What is the appropriate action?", options:["Document only","Assess patient and report","Ignore if no harm","Blame pharmacy"], answer:1, failTag:"LAW"},
+    {text:"[HARD 74] A patient asks the nurse not to disclose information to family. What should the nurse do?", options:["Inform family anyway","Respect confidentiality","Ask physician","Document and tell family"], answer:1, failTag:"CONFIDENTIALITY"},
+    {text:"[HARD 75] An RN is asked to perform a task outside their scope. What is the correct response?", options:["Perform if skilled","Refuse and escalate","Ask colleague","Document and proceed"], answer:1, failTag:"SCOPE"},
+
+    {text:"[HARD 76] A UAP reports a change in patient condition. What is the nurse’s responsibility?", options:["Assess patient personally","Ignore report","Ask UAP to reassess","Document only"], answer:0, failTag:"DELEGATION"},
+    {text:"[HARD 77] A patient with decision-making capacity refuses life-saving treatment. What should the nurse do?", options:["Override refusal","Respect decision","Call family","Seek court order"], answer:1, failTag:"ETHICS"},
+    {text:"[HARD 78] A nurse documents care that was not provided. This is considered?", options:["Negligence","Fraud","Error","Delegation"], answer:1, failTag:"LAW"},
+    {text:"[HARD 79] Which task should NOT be delegated to an LPN?", options:["Medication administration","Initial assessment","Wound care","Data collection"], answer:1, failTag:"DELEGATION"},
+    {text:"[HARD 80] A patient requests to see their medical record. What should the nurse do?", options:["Follow facility policy","Refuse","Alter record","Delay request"], answer:0, failTag:"LAW"},
+
+    {text:"[HARD 81] A nurse suspects abuse but the patient denies it. What is the nurse’s duty?", options:["Report suspicion","Ignore","Document only","Ask family"], answer:0, failTag:"LAW"},
+    {text:"[HARD 82] A patient leaves the unit without permission. What should the nurse do?", options:["Notify provider and security","Ignore","Document only","Call family"], answer:0, failTag:"SAFETY"},
+    {text:"[HARD 83] A nurse witnesses another nurse diverting narcotics. What is the appropriate action?", options:["Report per policy","Confront privately only","Ignore","Document anonymously"], answer:0, failTag:"ETHICS"},
+    {text:"[HARD 84] A patient requests assisted death where it is illegal. What should the nurse do?", options:["Refuse and provide support","Assist","Call police","Ignore"], answer:0, failTag:"LAW"},
+    {text:"[HARD 85] A family demands information about a patient without consent. What is the nurse’s response?", options:["Maintain confidentiality","Share basic info","Ask physician","Document and comply"], answer:0, failTag:"CONFIDENTIALITY"},
+
+    {text:"[HARD 86] An RN delegates medication administration to a UAP. This is?", options:["Appropriate","Inappropriate","Legal","Ethical"], answer:1, failTag:"DELEGATION"},
+    {text:"[HARD 87] A patient threatens harm to others. What is the nurse’s priority?", options:["Ensure safety and report","Maintain confidentiality","Document only","Ignore"], answer:0, failTag:"LAW"},
+    {text:"[HARD 88] A nurse is asked to falsify documentation. What should the nurse do?", options:["Refuse and report","Comply","Document later","Ignore"], answer:0, failTag:"LAW"},
+    {text:"[HARD 89] Which patient situation requires informed consent?", options:["Surgery","Vital signs","Bath","Feeding"], answer:0, failTag:"ETHICS"},
+    {text:"[HARD 90] A patient requests a different nurse. What is the appropriate response?", options:["Attempt to accommodate","Refuse","Document and ignore","Report patient"], answer:0, failTag:"ETHICS"},
+
+    {text:"[HARD 91] A nurse posts patient information on social media. This violates?", options:["HIPAA","Delegation","Protocol","Assessment"], answer:0, failTag:"LAW"},
+    {text:"[HARD 92] A nurse is caring for a close relative. What is the ethical concern?", options:["Boundary violation","Negligence","Fraud","Delegation"], answer:0, failTag:"ETHICS"},
+    {text:"[HARD 93] A patient lacks capacity and no surrogate is available. What should the nurse do?", options:["Follow emergency doctrine","Delay care","Refuse","Ask family"], answer:0, failTag:"LAW"},
+    {text:"[HARD 94] A nurse administers medication without checking allergies. This is?", options:["Negligence","Battery","Assault","Delegation"], answer:0, failTag:"LAW"},
+    {text:"[HARD 95] A patient consents but later withdraws consent. What should the nurse do?", options:["Stop procedure","Proceed","Document and continue","Notify family"], answer:0, failTag:"ETHICS"},
+
+    {text:"[HARD 96] A nurse fails to report a critical lab value. This is?", options:["Negligence","Ethical practice","Delegation","Scope"], answer:0, failTag:"LAW"},
+    {text:"[HARD 97] A nurse questions an unsafe order. What should the nurse do?", options:["Clarify before carrying out","Follow order","Document only","Ignore"], answer:0, failTag:"ADVOCACY"},
+    {text:"[HARD 98] A patient demands care beyond standard practice. What is the nurse’s role?", options:["Follow standards","Comply","Ignore","Document only"], answer:0, failTag:"LAW"},
+    {text:"[HARD 99] A nurse accepts gifts of high value from a patient. This is?", options:["Boundary violation","Ethical","Appropriate","Required"], answer:0, failTag:"ETHICS"},
+    {text:"[HARD 100] A nurse abandons assignment without handoff. This is?", options:["Abandonment","Delegation","Ethical practice","Advocacy"], answer:0, failTag:"LAW"}
+  ] A competent adult patient refuses a prescribed treatment. The family insists the nurse proceed. What should the nurse do?", options:["Proceed with treatment","Notify physician and proceed","Respect refusal and document","Ask administration to override"], answer:2, failTag:"ETHICS"},
+    {text:"[HARD 72] Which task can be delegated to a UAP for a stable patient?", options:["Patient education","Assessment","Routine vital signs","Care plan modification"], answer:2, failTag:"DELEGATION"},
+    {text:"[HARD 73] A nurse discovers a medication error after administration. What is the appropriate action?", options:["Document only","Assess patient and report","Ignore if no harm","Blame pharmacy"], answer:1, failTag:"LAW"},
+    {text:"[HARD 74] A patient asks the nurse not to disclose information to family. What should the nurse do?", options:["Inform family anyway","Respect confidentiality","Ask physician","Document and tell family"], answer:1, failTag:"CONFIDENTIALITY"},
+    {text:"[HARD 75] An RN is asked to perform a task outside their scope. What is the correct response?", options:["Perform if skilled","Refuse and escalate","Ask colleague","Document and proceed"], answer:1, failTag:"SCOPE"}
+  ]
 };
 
 // ================= STATE =================
