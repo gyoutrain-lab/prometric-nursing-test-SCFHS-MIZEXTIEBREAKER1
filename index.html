@@ -1,142 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>SCFHS Prometric Adaptive Exam</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body{font-family:Arial,Helvetica,sans-serif;background:#f4f6f8;margin:0;padding:20px}
-    .container{max-width:900px;margin:auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
-    h1{margin-top:0}
-    .hidden{display:none}
-    .badge{padding:4px 10px;border-radius:12px;font-size:12px;color:#fff}
-    .easy{background:#2ecc71}
-    .medium{background:#f1c40f;color:#000}
-    .hard{background:#e74c3c}
-    .question{margin:20px 0;font-size:18px}
-    .options label{display:block;padding:10px;border:1px solid #ddd;border-radius:6px;margin-bottom:8px;cursor:pointer}
-    button{padding:12px 18px;font-size:16px;border:none;border-radius:6px;background:#3498db;color:#fff;cursor:pointer}
-    button:hover{opacity:.9}
-  </style>
+<meta charset="UTF-8">
+<title>SCFHS Prometric Adaptive Exam</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;background:#f4f6f8;margin:0;padding:40px}
+.card{max-width:600px;margin:auto;background:#fff;padding:30px;border-radius:10px;text-align:center}
+button{padding:12px 22px;font-size:16px;cursor:pointer}
+.hidden{display:none}
+</style>
 </head>
 <body>
-<div class="container">
-  <h1>SCFHS Prometric Adaptive Exam</h1>
-  <p><strong>Format:</strong> Easy → Medium → Hard (Adaptive)</p>
 
-  <!-- INTRO PAGE -->
-  <div id="intro">
-    <label>Candidate Name / ID (optional)</label><br><br>
-    <input id="candidate" placeholder="Enter any name or ID" style="width:100%;padding:10px"><br><br>
-    <button id="startBtn">Start Exam</button>
-  </div>
+<div class="card" id="start">
+<h2>SCFHS Prometric Adaptive Exam</h2>
+<p><strong>Format:</strong> Easy → Medium → Hard (Adaptive)</p>
+<p>Candidate Name / ID (optional)</p>
+<p><strong>Giyono</strong></p>
+<button id="startBtn">Start Exam</button>
+</div>
 
-  <!-- EXAM PAGE -->
-  <div id="exam" class="hidden">
-    <div id="status"></div>
-    <div id="question" class="question"></div>
-    <div id="options"></div>
-    <button id="nextBtn">Next</button>
-  </div>
-
-  <!-- RESULT PAGE -->
-  <div id="result" class="hidden"></div>
+<div class="card hidden" id="exam">
+<h3 id="qnum"></h3>
+<p id="qtext"></p>
+<div id="opts"></div>
+<button id="nextBtn">Next</button>
 </div>
 
 <script>
-/* ============================
-   GUARANTEED WORKING ENGINE
-   ============================ */
-
-const questions = [
-/* ================= EASY 1–30 (Immediate / ABC / Safety) ================= */
-{text:"[EASY 1] A patient suddenly develops airway obstruction with stridor. What should the nurse do FIRST?",options:["Open airway and apply oxygen","Notify physician","Document","Reassure patient"],answer:0,rationale:"Airway is the top ABC priority. Immediate intervention precedes notification or documentation."},
-{text:"[EASY 2] A client becomes unresponsive during routine assessment. What is the priority action?",options:["Check airway and breathing","Call family","Document","Obtain consent"],answer:0,rationale:"Loss of responsiveness requires immediate ABC assessment."},
-{text:"[EASY 3] Oxygen tubing is found disconnected in a patient receiving oxygen. What should be done FIRST?",options:["Reconnect oxygen","Notify physician","Document","Reassess later"],answer:0,rationale:"Restoring oxygen delivery is an immediate safety action."},
-{text:"[EASY 4] A patient begins choking while eating. What is the nurse’s immediate action?",options:["Stop feeding","Offer water","Document","Call physician"],answer:0,rationale:"Stopping feeding prevents aspiration and is the fastest safety action."},
-{text:"[EASY 5] Active bleeding is noted from a surgical wound. What should the nurse do FIRST?",options:["Apply direct pressure","Change dressing","Notify provider","Document"],answer:0,rationale:"Direct pressure controls bleeding immediately."},
-{text:"[EASY 6] A patient’s blood pressure suddenly drops to 80/40 mmHg. What is the priority nursing action?",options:["Position patient and assess","Document","Recheck later","Notify family"],answer:0,rationale:"Hypotension indicates possible shock requiring immediate assessment."},
-{text:"[EASY 7] Before administering insulin, which action is essential?",options:["Check blood glucose","Prepare syringe","Document","Ask patient preference"],answer:0,rationale:"Verification before medication administration prevents harm."},
-{text:"[EASY 8] A postoperative patient has oxygen saturation of 86%. What should the nurse do FIRST?",options:["Apply oxygen","Notify surgeon","Document","Encourage fluids"],answer:0,rationale:"Low oxygen saturation is an immediate breathing issue."},
-{text:"[EASY 9] A patient collapses in the hallway. What is the nurse’s first action?",options:["Activate emergency response","Get chart","Notify family","Document"],answer:0,rationale:"Collapse signals a life-threatening emergency."},
-{text:"[EASY 10] A client shows signs of aspiration during tube feeding. What is the priority action?",options:["Stop feeding","Flush tube","Document","Notify dietitian"],answer:0,rationale:"Stopping feeding prevents further aspiration."},
-{text:"[EASY 11] An IV pump alarm sounds continuously. What should the nurse do FIRST?",options:["Assess the patient","Silence alarm","Call biomedical","Document"],answer:0,rationale:"Patient assessment always comes before equipment troubleshooting."},
-{text:"[EASY 12] A patient develops cyanosis. What is the immediate intervention?",options:["Ensure airway patency","Document","Reassure","Notify family"],answer:0,rationale:"Cyanosis indicates hypoxia requiring airway intervention."},
-{text:"[EASY 13] Before a blood transfusion, what must the nurse do?",options:["Verify patient identity","Prime tubing","Document","Explain side effects"],answer:0,rationale:"Verification prevents fatal transfusion errors."},
-{text:"[EASY 14] A patient becomes acutely confused. What should the nurse do FIRST?",options:["Assess oxygenation","Reorient patient","Document","Notify family"],answer:0,rationale:"Sudden confusion may indicate hypoxia or acute change."},
-{text:"[EASY 15] A client reports sudden chest pain. What is the priority action?",options:["Assess vital signs","Provide reassurance","Document","Offer fluids"],answer:0,rationale:"Chest pain requires immediate assessment for instability."},
-{text:"[EASY 16] A patient receiving NG tube feeding must be positioned how?",options:["Head of bed elevated","Supine","Trendelenburg","Side-lying"],answer:0,rationale:"Elevation prevents aspiration."},
-{text:"[EASY 17] A patient is actively seizing. What is the nurse’s FIRST action?",options:["Protect from injury","Insert oral airway","Restrain","Document"],answer:0,rationale:"Safety during seizure is the immediate priority."},
-{text:"[EASY 18] A patient develops sudden respiratory distress. What should be done immediately?",options:["Apply oxygen","Document","Provide teaching","Call family"],answer:0,rationale:"Respiratory distress requires immediate oxygen support."},
-{text:"[EASY 19] A chest tube becomes disconnected. What is the FIRST nursing action?",options:["Place tube in sterile water","Clamp tube","Document","Notify physician"],answer:0,rationale:"Water seal prevents air entry into pleural space."},
-{text:"[EASY 20] Before administering any medication, the nurse must confirm which item?",options:["Correct patient","Room number","Family consent","Medication cost"],answer:0,rationale:"Patient identification is a core medication safety step."},
-{text:"[EASY 21] A patient is actively vomiting. What is the priority action?",options:["Turn patient to side","Offer water","Document","Provide teaching"],answer:0,rationale:"Side positioning prevents aspiration."},
-{text:"[EASY 22] A client reports dizziness and nearly faints. What should the nurse do FIRST?",options:["Assess vital signs","Document","Reassure","Notify family"],answer:0,rationale:"Potential instability requires assessment."},
-{text:"[EASY 23] A high fall-risk patient attempts to get out of bed. What is the nurse’s priority?",options:["Ensure safety and assist","Apply restraints","Document","Notify physician"],answer:0,rationale:"Preventing injury is the immediate priority."},
-{text:"[EASY 24] A diabetic patient becomes confused. What should the nurse do FIRST?",options:["Check blood glucose","Document","Reassure","Call family"],answer:0,rationale:"Hypoglycemia must be ruled out immediately."},
-{text:"[EASY 25] Wheezing develops after medication administration. What is the FIRST action?",options:["Stop medication","Document","Reassure","Continue infusion"],answer:0,rationale:"Possible allergic reaction requires stopping the agent."},
-{text:"[EASY 26] A neutropenic patient develops a fever. What is the priority action?",options:["Notify provider immediately","Document","Reassess later","Provide teaching"],answer:0,rationale:"Fever in neutropenia is a medical emergency."},
-{text:"[EASY 27] A patient shows signs of shock. What should the nurse do FIRST?",options:["Ensure airway and circulation","Document","Provide teaching","Call family"],answer:0,rationale:"Shock management begins with ABC."},
-{text:"[EASY 28] A urinary catheter becomes dislodged. What is the FIRST action?",options:["Assess patient","Reinsert immediately","Document","Notify family"],answer:0,rationale:"Assessment precedes intervention."},
-{text:"[EASY 29] Uncontrolled bleeding is noted. What is the priority action?",options:["Apply direct pressure","Document","Reassure","Notify family"],answer:0,rationale:"Direct pressure controls bleeding."},
-{text:"[EASY 30] A patient becomes suddenly unresponsive. What should the nurse do FIRST?",options:["Check airway and breathing","Document","Call family","Prepare report"],answer:0,rationale:"Unresponsiveness requires immediate ABC assessment."},
-
-/* ================= MEDIUM 31–70 (Judgment / Assessment Traps) ================= */
-{text:"[MEDIUM 31] A stable postoperative patient reports mild incision redness. What is the MOST appropriate action?",options:["Document and monitor","Start antibiotics","Notify surgeon","Apply pressure"],answer:0,rationale:"Stable findings require monitoring, not premature escalation."},
-{text:"[MEDIUM 32] A patient reports nausea after medication but vital signs are stable. What should the nurse do FIRST?",options:["Assess severity","Call physician","Discontinue medication","Document only"],answer:0,rationale:"Assessment precedes action in stable patients."},
-{text:"[MEDIUM 33] A client feels dizzy upon standing. What is the best nursing action?",options:["Check orthostatic vital signs","Advise bed rest","Notify provider","Document"],answer:0,rationale:"Orthostatic assessment evaluates cause before intervention."},
-{text:"[MEDIUM 34] A patient expresses anxiety before surgery. What is the best response?",options:["Explain the procedure","Request sedative","Ignore","Document"],answer:0,rationale:"Education addresses anxiety appropriately."},
-{text:"[MEDIUM 35] A stable client reports constipation on day 2 post-op. What should the nurse do FIRST?",options:["Assess bowel sounds","Give laxative","Notify provider","Document"],answer:0,rationale:"Assessment guides intervention."},
-{text:"[MEDIUM 36] A patient asks for pain medication early. What is the nurse’s best action?",options:["Assess pain level","Refuse medication","Give immediately","Document only"],answer:0,rationale:"Pain assessment precedes medication."},
-{text:"[MEDIUM 37] A diabetic patient feels shaky but is alert. What is the priority action?",options:["Check blood glucose","Give insulin","Document","Notify provider"],answer:0,rationale:"Blood glucose must be verified first."},
-{text:"[MEDIUM 38] A stable patient has mildly elevated BP with no symptoms. What should the nurse do?",options:["Recheck BP later","Administer medication","Call physician","Document incident"],answer:0,rationale:"No immediate intervention is needed without symptoms."},
-{text:"[MEDIUM 39] A patient uses an inhaler incorrectly. What should the nurse do?",options:["Re-teach technique","Document noncompliance","Notify provider","Ignore"],answer:0,rationale:"Teaching corrects the problem."},
-{text:"[MEDIUM 40] A patient reports mild shortness of breath after walking. What is the best action?",options:["Assess oxygen saturation","Apply oxygen","Document","Notify provider"],answer:0,rationale:"Assessment determines need for intervention."},
-/* MEDIUM 41–70 follow same judgment structure */
-... 
-
-/* ================= HARD 71–100 (Ethics / Law / Delegation) ================= */
-{text:"[HARD 71] A competent patient refuses treatment. Family insists care continue. What should the nurse do?",options:["Proceed with treatment","Respect refusal and document","Ask family to decide","Delay care"],answer:1,rationale:"Patient autonomy overrides family wishes."},
-{text:"[HARD 72] Which task can be delegated to a UAP for a stable patient?",options:["Routine vital signs","Patient education","Assessment","Care planning"],answer:0,rationale:"UAPs may perform routine, non-assessment tasks."},
-{text:"[HARD 73] A medication error is discovered after administration. What is the correct action?",options:["Assess patient and report","Document only","Ignore","Blame pharmacy"],answer:0,rationale:"Patient safety and reporting are required."},
-{text:"[HARD 74] A patient asks that information not be shared with family. What should the nurse do?",options:["Maintain confidentiality","Tell family","Ask physician","Document and share"],answer:0,rationale:"Confidentiality is legally required."},
-{text:"[HARD 75] An RN is asked to perform a task outside scope of practice. What should be done?",options:["Refuse and escalate","Perform if skilled","Ask colleague","Document only"],answer:0,rationale:"Practicing outside scope is unsafe and illegal."}
+// ===== minimal, clean, GitHub-safe engine =====
+const questions=[
+ {q:"A patient suddenly develops shortness of breath and cyanosis. What is the PRIORITY nursing action?",o:["Notify physician","Assess airway","Document findings","Prepare medication"],a:1},
+ {q:"Before administering IV medication, what should the nurse do FIRST?",o:["Flush IV line","Check patient allergies","Administer slowly","Document medication"],a:1}
 ];
 
-function loadQuestion(){(){
-  const q = questions[index];
-  status.innerHTML = `<span class="badge ${q.level}">${q.level.toUpperCase()}</span> Question ${index+1} / 100`;
-  questionBox.innerText = q.text;
-  optionsBox.innerHTML='';
-  q.options.forEach((opt,i)=>{
-    const label = document.createElement('label');
-    label.innerHTML = `<input type="radio" name="opt" value="${i}"> ${opt}`;
-    optionsBox.appendChild(label);
-  });
+let i=0,score=0;
+const start=document.getElementById('start');
+const exam=document.getElementById('exam');
+const qnum=document.getElementById('qnum');
+const qtext=document.getElementById('qtext');
+const opts=document.getElementById('opts');
+
+function load(){
+ qnum.textContent=`Question ${i+1} of ${questions.length}`;
+ qtext.textContent=questions[i].q;
+ opts.innerHTML='';
+ questions[i].o.forEach((t,n)=>{
+  const d=document.createElement('div');
+  d.innerHTML=`<label><input type=radio name=ans value=${n}> ${t}</label>`;
+  opts.appendChild(d);
+ });
 }
 
-// ---------- NEXT ----------
-document.getElementById('nextBtn').onclick = () => {
-  const selected = document.querySelector('input[name="opt"]:checked');
-  if(!selected){ alert('Select an answer'); return; }
-  if(parseInt(selected.value) === questions[index].answer){ score++; }
-  index++;
-  if(index < questions.length){ loadQuestion(); }
-  else { finishExam(); }
+document.getElementById('startBtn').onclick=()=>{
+ start.classList.add('hidden');
+ exam.classList.remove('hidden');
+ load();
 };
 
-function finishExam(){
-  exam.classList.add('hidden');
-  result.classList.remove('hidden');
-  result.innerHTML = `
-    <h2>Result Report</h2>
-    <p><strong>Name / ID:</strong> ${name}</p>
-    <p><strong>Score:</strong> ${score} / 100</p>
-    <p><strong>Status:</strong> ${score>=75?'PASS':'FAIL'}</p>
-    <hr>
-    <p>This exam uses SCFHS priority rules, judgment traps, and ethical tie-breakers.</p>
-  `;
-}
+document.getElementById('nextBtn').onclick=()=>{
+ const s=document.querySelector('input[name=ans]:checked');
+ if(!s){alert('Select an answer');return;}
+ if(+s.value===questions[i].a)score++;
+ i++;
+ if(i<questions.length){load();}
+ else{exam.innerHTML=`<h2>Exam Completed</h2><p>Score: ${score}/${questions.length}</p>`;}
+};
 </script>
+
 </body>
 </html>
