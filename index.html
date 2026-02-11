@@ -4,81 +4,134 @@
 <meta charset="UTF-8">
 <title>SCFHS Prometric Adaptive Exam</title>
 <style>
-body{font-family:Arial,Helvetica,sans-serif;background:#f4f6f8;margin:0;padding:40px}
-.card{max-width:600px;margin:auto;background:#fff;padding:30px;border-radius:10px;text-align:center}
-button{padding:12px 22px;font-size:16px;cursor:pointer}
+body{
+  font-family: Arial, sans-serif;
+  background:#f4f6f8;
+  padding:40px;
+}
+.card{
+  max-width:700px;
+  margin:auto;
+  background:#fff;
+  padding:30px;
+  border-radius:8px;
+}
 .hidden{display:none}
+button{
+  padding:12px 20px;
+  font-size:16px;
+  margin-top:20px;
+  cursor:pointer;
+}
+.option{margin:10px 0}
 </style>
 </head>
+
 <body>
 
 <div class="card" id="start">
-<h2>SCFHS Prometric Adaptive Exam</h2>
-<p><strong>Format:</strong> Easy → Medium → Hard (Adaptive)</p>
-<p>Candidate Name / ID (optional)</p>
-<input type="text" id="candidate" placeholder="Enter name or ID" style="padding:10px;width:80%;margin-bottom:15px" />
-<br>
-<button id="startBtn">Start Exam</button>
+  <h2>SCFHS Prometric Adaptive Exam</h2>
+  <p><strong>Format:</strong> Easy → Medium → Hard (Adaptive)</p>
+  <p>Candidate Name / ID (optional)</p>
+  <input id="name" style="padding:10px;width:80%">
+  <br>
+  <button onclick="startExam()">Start Exam</button>
 </div>
 
 <div class="card hidden" id="exam">
-<h3 id="qnum"></h3>
-<p id="qtext"></p>
-<div id="opts"></div>
-<button id="nextBtn">Next</button>
+  <h3 id="qnum"></h3>
+  <p id="qtext"></p>
+  <div id="opts"></div>
+  <button onclick="next()">Next</button>
+</div>
+
+<div class="card hidden" id="end">
+  <h2>Exam Completed</h2>
+  <p id="result"></p>
 </div>
 
 <script>
-// ===== minimal, clean, GitHub-safe engine =====
-const questions=[
- {q:"A patient suddenly develops shortness of breath and cyanosis. What is the PRIORITY nursing action?",o:["Notify physician","Assess airway","Document findings","Prepare medication"],a:1,r:"Airway comes before notification. In any acute respiratory distress, the nurse must first assess and secure the airway before reporting or documenting."},
- {q:"Before administering IV medication, what should the nurse do FIRST?",o:["Flush IV line","Check patient allergies","Administer slowly","Document medication"],a:1,r:"Allergy verification is a safety priority and must be completed before any medication is administered."}
+/* ===== QUESTIONS ===== */
+const questions = [
+  {
+    q: "A patient suddenly becomes cyanotic with difficulty breathing. What is the PRIORITY nursing action?",
+    o: [
+      "Notify the physician",
+      "Assess and secure the airway",
+      "Document the findings",
+      "Prepare prescribed medication"
+    ],
+    a: 1,
+    r: "Airway is always the first priority. Assessment and airway support come before notification or documentation."
+  },
+  {
+    q: "Before administering IV medication, what should the nurse do FIRST?",
+    o: [
+      "Flush the IV line",
+      "Check for medication allergies",
+      "Administer the medication slowly",
+      "Document administration"
+    ],
+    a: 1,
+    r: "Checking allergies is a critical safety step and must be done before any medication is given."
+  }
 ];
 
-let i=0,score=0;
-const start=document.getElementById('start');
-const exam=document.getElementById('exam');
-const qnum=document.getElementById('qnum');
-const qtext=document.getElementById('qtext');
-const opts=document.getElementById('opts');
+let i = 0;
+let score = 0;
 
-function load(){
- qnum.textContent=`Question ${i+1} of ${questions.length}`;
- qtext.textContent=questions[i].q;
- opts.innerHTML='';
- questions[i].o.forEach((t,n)=>{
-  const d=document.createElement('div');
-  d.innerHTML=`<label><input type=radio name=ans value=${n}> ${t}</label>`;
-  opts.appendChild(d);
- });
-} of ${questions.length}`;
- qtext.textContent=questions[i].q;
- opts.innerHTML='';
- questions[i].o.forEach((t,n)=>{
-  const d=document.createElement('div');
-  d.innerHTML=`<label><input type=radio name=ans value=${n}> ${t}</label>`;
-  opts.appendChild(d);
- });
+/* ===== FUNCTIONS ===== */
+function startExam(){
+  document.getElementById("start").classList.add("hidden");
+  document.getElementById("exam").classList.remove("hidden");
+  loadQuestion();
 }
 
-document.getElementById('startBtn').onclick=()=>{
- start.classList.add('hidden');
- exam.classList.remove('hidden');
- load();
-};
+function loadQuestion(){
+  document.getElementById("qnum").innerText =
+    "Question " + (i+1) + " of " + questions.length;
+  document.getElementById("qtext").innerText = questions[i].q;
 
-document.getElementById('nextBtn').onclick=()=>{
- const s=document.querySelector('input[name=ans]:checked');
- if(!s){alert('Select an answer');return;}
- const correct = +s.value===questions[i].a;
- if(correct){score++; i++; if(i<questions.length){load();} else{finish();}}
- else{
-  alert(`Incorrect. Rationale: ${questions[i].r}`);
- }
-};
+  const opts = document.getElementById("opts");
+  opts.innerHTML = "";
+
+  questions[i].o.forEach((text, idx) => {
+    const div = document.createElement("div");
+    div.className = "option";
+    div.innerHTML =
+      `<label>
+        <input type="radio" name="ans" value="${idx}">
+        ${text}
+       </label>`;
+    opts.appendChild(div);
+  });
+}
+
+function next(){
+  const selected = document.querySelector("input[name='ans']:checked");
+  if(!selected){
+    alert("Select an answer");
+    return;
+  }
+
+  if(parseInt(selected.value) === questions[i].a){
+    score++;
+    i++;
+    if(i < questions.length){
+      loadQuestion();
+    } else {
+      finish();
+    }
+  } else {
+    alert("Incorrect.\n\nRationale:\n" + questions[i].r);
+  }
+}
 
 function finish(){
- exam.innerHTML=`<h2>Exam Completed</h2><p>Score: ${score}/${questions.length}</p>`;
+  document.getElementById("exam").classList.add("hidden");
+  document.getElementById("end").classList.remove("hidden");
+  document.getElementById("result").innerText =
+    "Score: " + score + " / " + questions.length;
 }
 </script>
 
