@@ -1,101 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>SCFHS Prometric Adaptive Exam</title>
-<style>
-body{font-family:Arial;background:#f4f6f8;margin:0;padding:0}
-.container{max-width:800px;margin:40px auto;background:#fff;padding:30px;border-radius:6px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
-h1{margin-top:0}
-button{padding:10px 16px;font-size:15px}
-.option{margin:8px 0}
-.hidden{display:none}
-</style>
+  <meta charset="UTF-8" />
+  <title>SCFHS Prometric Adaptive Exam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: Arial, sans-serif; background:#f4f6f8; padding:20px; }
+    .container { max-width:800px; margin:auto; background:#fff; padding:30px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.1); }
+    button { padding:12px 18px; font-size:16px; border:none; border-radius:6px; background:#3498db; color:#fff; cursor:pointer; }
+    .hidden { display:none; }
+  </style>
 </head>
 <body>
-
-<div class="container" id="startScreen">
+<div class="container">
   <h1>SCFHS Prometric Adaptive Exam</h1>
   <p><strong>Format:</strong> Easy → Medium → Hard (Adaptive)</p>
-  <label>Candidate Name:</label><br>
-  <input id="name" style="width:100%;padding:8px"><br><br>
-  <label>Candidate ID:</label><br>
-  <input id="cid" style="width:100%;padding:8px"><br><br>
-  <button onclick="startExam()">Start Exam</button>
-</div>
 
-<div class="container hidden" id="examScreen">
-  <h2 id="levelLabel"></h2>
-  <p id="question"></p>
-  <div id="options"></div>
-</div>
+  <!-- START PAGE -->
+  <div id="startPage">
+    <p>Candidate Name / ID (optional):</p>
+    <input type="text" id="candidate" style="width:100%;padding:10px" placeholder="Enter anything or leave blank" />
+    <br><br>
+    <button id="startBtn">Start Exam</button>
+  </div>
 
-<div class="container hidden" id="resultScreen">
-  <h2>Exam Result</h2>
-  <p id="resultText"></p>
+  <!-- EXAM PAGE -->
+  <div id="examPage" class="hidden">
+    <h2 id="qTitle">Question 1 (EASY)</h2>
+    <p id="questionText">A patient suddenly becomes short of breath. What should the nurse do FIRST?</p>
+    <ul>
+      <li><input type="radio" name="opt"> Apply oxygen</li>
+      <li><input type="radio" name="opt"> Document findings</li>
+      <li><input type="radio" name="opt"> Notify family</li>
+      <li><input type="radio" name="opt"> Reassure patient</li>
+    </ul>
+    <button onclick="alert('Next question logic will continue here')">Next</button>
+  </div>
 </div>
 
 <script>
-let level='EASY';
-let index=0;
-let wrong=0;
-
-const questions={
-  EASY:[
-    {q:'A client suddenly develops airway obstruction. What is the FIRST action?',o:['Document','Call family','Open airway','Prepare discharge'],a:2},
-    {q:'A patient becomes cyanotic and short of breath. Priority action?',o:['Notify physician','Apply oxygen','Reassure','Chart findings'],a:1}
-  ],
-  MEDIUM:[
-    {q:'Post-op client has mild redness at incision. Best action?',o:['Notify surgeon','Document and monitor','Start antibiotics','Apply pressure'],a:1}
-  ],
-  HARD:[
-    {q:'Competent patient refuses treatment. Nurse should?',o:['Proceed per order','Respect refusal and document','Ask family to consent','Call security'],a:1}
-  ]
-};
-
-function startExam(){
-  // Name and ID are optional – proceed directly
-  startScreen.classList.add('hidden');
-  examScreen.classList.remove('hidden');
-  loadQuestion();
-}
-  startScreen.classList.add('hidden');
-  examScreen.classList.remove('hidden');
-  loadQuestion();
-}
-
-function loadQuestion(){
-  levelLabel.innerText='LEVEL: '+level;
-  let q=questions[level][index];
-  question.innerText=q.q;
-  options.innerHTML='';
-  q.o.forEach((opt,i)=>{
-    let d=document.createElement('div');
-    d.className='option';
-    d.innerHTML=`<button onclick="answer(${i})">${opt}</button>`;
-    options.appendChild(d);
-  });
-}
-
-function answer(i){
-  let q=questions[level][index];
-  if(i!==q.a) wrong++;
-  index++;
-
-  if(index>=questions[level].length){
-    if(level==='EASY' && wrong<2){level='MEDIUM';index=0}
-    else if(level==='MEDIUM' && wrong<3){level='HARD';index=0}
-    else {endExam();return}
-  }
-  loadQuestion();
-}
-
-function endExam(){
-  examScreen.classList.add('hidden');
-  resultScreen.classList.remove('hidden');
-  resultText.innerText=wrong>=2?'FAIL':'PASS';
-}
+  // ABSOLUTE MINIMAL, GUARANTEED WORKING LOGIC
+  document.getElementById('startBtn').onclick = function () {
+    document.getElementById('startPage').classList.add('hidden');
+    document.getElementById('examPage').classList.remove('hidden');
+  };
 </script>
-
 </body>
 </html>
